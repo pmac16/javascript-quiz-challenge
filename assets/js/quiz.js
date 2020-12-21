@@ -1,8 +1,9 @@
 //Global variables
 var timeLeft = 75;
 var timeEl = document.getElementById('countdown');
-var currentQuestionNumber = 1; //keeps track of which question we are on
+var currentQuestionNumber = 0; //keeps track of which question we are on
 var answerNumber = 0; //keeps track of which answer they picked
+var currentChoiceNumber = 0;
 
 var questions = [ 
     "Commonly used data types DO NOT include: ", 
@@ -54,7 +55,7 @@ function startQuiz () {
     setTimeout(timerCount, 1000);
 
     //Display each question one at a time
-    var currentQuestionNumber= 0;
+    // var currentQuestionNumber= 0;
     displayQuestion();
 
 };
@@ -91,19 +92,52 @@ function displayQuestion(){
     questionContainer.appendChild(questionText);
 
     // now let us display the answer choices as individual radio buttons in a form
+    var c = currentChoiceNumber;
 
-    var choiceForm=document.createElement("form");
-    choiceForm.className = "form";
-    var choice1 =  
-    '<input type="radio" name="ans" value="1">' + choices[n][0] +
-    '<br> <input type="radio" name="ans" value="2">' + choices[n][1] + 
-   // '<br> <input type="button" id="ansBtn" onclick="buttonFunction()" value="Submit Answer"> <br>';  this goes with onclick function 
-   // and replaces the next statement
-     '<br> <input type="button" class="ansBtn" id="ansBtn" value="Submit Answer"> <br>';
-    choiceForm.innerHTML = choice1
-    questionContainer.appendChild(choiceForm);
+    //button for choice 1
+    var choiceTextString1 = "<h3>" + choices[c][0] + "</h3>"
+
+    var choiceContainer = document.createElement("div");
+    choiceContainer.className = "container";
+    questionContainer.appendChild(choiceContainer);
+
+    var buttonChoice1 = document.createElement("button");
+    buttonChoice1.className = "choice-button"
+    buttonChoice1.innerHTML = choiceTextString1
+    choiceContainer.appendChild(buttonChoice1);
+
+     //button for choice 2
+    var choiceTextString2 = "<h3>" + choices[c][1] + "</h3>"
+
+    var buttonChoice2 = document.createElement("button");
+    buttonChoice2.className = "choice-button"
+    buttonChoice2.innerHTML = choiceTextString2
+    choiceContainer.appendChild(buttonChoice2);
+
+     //button for choice 3
+    var choiceTextString3 = "<h3>" + choices[c][2] + "</h3>"
+
+    var buttonChoice3 = document.createElement("button");
+    buttonChoice3.className = "choice-button"
+    buttonChoice3.innerHTML = choiceTextString3
+    choiceContainer.appendChild(buttonChoice3);
+
+     //button for choice 4
+    var choiceTextString4 = "<h3>" + choices[c][3] + "</h3>"
+
+    var buttonChoice4 = document.createElement("button");
+    buttonChoice4.className = "choice-button"
+    buttonChoice4.innerHTML = choiceTextString4
+    choiceContainer.appendChild(buttonChoice4);
+
+
+    
+
+    
+
 
     //  now let us add the entire container to the document and display it
     document.body.appendChild(questionContainer);
 
 }
+
