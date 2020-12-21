@@ -1,3 +1,27 @@
+//Global variables
+var timeLeft = 75;
+var timeEl = document.getElementById('countdown');
+var currentQuestionNumber = 1; //keeps track of which question we are on
+var answerNumber = 0; //keeps track of which answer they picked
+
+var questions = [ 
+    "Commonly used data types DO NOT include: ", 
+    "The condition in an if/else statement is enclosed within ___.", 
+    "Arrays in JavaScript can be used to store ___.", 
+    "String values must be enclosed within ______ when being assigned to variables.", 
+    "A very useful tool used during development and debugging for printing content to the debugger is:", 
+];
+
+var choices = [ 
+    ["Strings", "Booleans", "Alerts", "Numbers"],
+    ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
+    ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"]
+    ["Commas", "Curly Brackets", "Quotes", "Parantheses"],
+    ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"]
+];
+
+var answers = ["Booleans", "Parentheses","All of the Above","Quotes","Console Log"];
+
 //display start page
 var masterContainer = document.createElement("div");
 masterContainer.className = "container";
@@ -34,3 +58,39 @@ function startQuiz () {
     displayQuestion();
 
 };
+
+//Timer Countdown
+
+function timerCount() {
+    document.getElementById("countdown").innerHTML="Time:" + timeLeft;
+    if (timeLeft >0) {
+        timeLeft = timeLeft -1;
+        setTimeout(timerCount,1000);
+    } else {
+        return;
+    }
+}
+
+// //Function to display the question
+// function displayQuestion() {
+
+//     //container to hold the questions
+//     var n = currentQuestionNumber;
+
+//     var questionContainer = document.createElement("div");
+//     questionContainer.className = "container";
+//     questionContainer.id="questionidcontainer"
+
+//     // let us create a variable with the question in formmating
+//     var questionTextString = "<h2" + questions[n] + "</h2>";
+
+//     //display the question 
+//     var questionText = document.createElement("div");
+//     questionText.className = "container";
+//     questionText.innerHTML= questionTextString;
+//     questionContainer.appendChild(questionText);
+
+//     //display the answer choices
+//     var choiceForm = document.createElement("form");
+//     var choice1=
+// }
