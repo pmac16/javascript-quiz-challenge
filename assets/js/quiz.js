@@ -4,12 +4,12 @@ masterContainer.className = "container";
 masterContainer.id = "id-container";
 
 var startPage = document.createElement("div");
-startPage.className = "start-page";
+startPage.className = "container title";
 startPage.innerHTML="<h1>JavaScript Challenge</h1>";
 masterContainer.appendChild(startPage);
 
 var directions = document.createElement("div");
-directions.className = "directions";
+directions.className = "container";
 directions.innerHTML="<h2>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</h2>";
 masterContainer.appendChild(directions);
 

@@ -2,13 +2,55 @@ body {
     background-color: white;
 }
 
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 /* Header */
 .top-row {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
     border: 2px black solid;
     background-color: lightseagreen;
   }
+
+  a {
+    color: black;
+  }
+  
+  a:hover {
+    color: blue;
+  }
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+}
+
+.title {
+    border: 2px black solid;
+    background-color: black;
+    color: white;
+}
+
+.startButton {
+    background: orange;
+    border: 2px, black, solid;
+    border-radius: 50px;
+    font-size: 20px;
+}
+
+.startButton:hover {
+    box-shadow: 0 0.4rem 1.4rem 0 black;
+    transition: transform 150ms;
+    transform: scale(1.05);
+
+}
