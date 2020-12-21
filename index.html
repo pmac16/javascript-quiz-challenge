@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
-    <div class="container">
-        <div id="home" class="flex-column flex-center">
-            <h1>JavaScript Quiz</h1>
-            <h2>Directions</h2>
+    <header>
+        <div class="top-row">
             <p>
-                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-            </p>
-            <a href="/quiz.html" class="btn">Start</a>
-            <a href="/highscores.html" id="highscore-btn" class="btn">High Scores</a>
+                <a href="highscores.html" target="_blank">High Scores</a>
+            </p>    
+            <p id="countdown">Timer: 75</p>
         </div>
-    </div>
+    </header>
+       
+<script src ="/assets/js/quiz.js"></script>
     
 </body>
 </html>
+
+

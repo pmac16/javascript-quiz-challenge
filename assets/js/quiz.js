@@ -1,9 +1,7 @@
-//Global Variables
-
-//display quiz question
-var questionContainer = document.createElement("div");
-questionContainer.className = "question";
-questionContainer.id = "question-container";
+//display start page
+var masterContainer = document.createElement("div");
+masterContainer.className = "container";
+masterContainer.id = "id-container";
 
 var startPage = document.createElement("div");
 startPage.className = "start-page";

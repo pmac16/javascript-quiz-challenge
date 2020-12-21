@@ -1,0 +1,17 @@
+body {
+    color: black;
+}
+
+#display {
+    display: flex;
+    justify-content: space-between;
+}
+
+.display-prefix {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.display-main-text {
+    text-align: center;
+}
