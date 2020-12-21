@@ -5,6 +5,9 @@ var currentQuestionNumber = 0; //keeps track of which question we are on
 var answerNumber = 0; //keeps track of which answer they picked
 var currentChoiceNumber = 0;
 
+
+
+
 var questions = [ 
     "Commonly used data types DO NOT include: ", 
     "The condition in an if/else statement is enclosed within ___.", 
@@ -21,7 +24,7 @@ var choices = [
     ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"]
 ];
 
-var answers = ["Booleans", "Parentheses","All of the Above","Quotes","Console Log"];
+var answers = ["Alerts", "Parentheses","All of the Above","Quotes","Console Log"];
 
 //display start page
 var masterContainer = document.createElement("div");
@@ -73,6 +76,11 @@ function timerCount() {
 }
 
 //Function to display the question
+for (let i = 0; i < questions.length; i++) {
+    
+    
+}
+
 function displayQuestion(){
 
     // let is firts create a container to house teh question, the answers and the submit button
@@ -131,13 +139,62 @@ function displayQuestion(){
     choiceContainer.appendChild(buttonChoice4);
 
 
-    
-
-    
 
 
     //  now let us add the entire container to the document and display it
     document.body.appendChild(questionContainer);
 
+    buttonChoice1.addEventListener("click", function() {
+        answerNumber = choices[n][0];
+        if (answers[n] == choices[c][0]) {
+            window.alert("Correct");
+            currentQuestionNumber++;
+        } else {
+            window.alert("Wrong");
+            timeLeft -=15
+            var removeQuestionContainer = document.getElementById("questionidcontainer");
+            removeQuestionContainer.remove();
+        }
+    })
+
+    buttonChoice2.addEventListener("click", function() {
+        answerNumber = choices[n][1];
+        if (answers[n] == choices[c][1]) {
+            window.alert("Correct");
+            currentQuestionNumber++;
+        } else {
+            window.alert("Wrong");
+            timeLeft -=15
+            var removeQuestionContainer = document.getElementById("questionidcontainer");
+            removeQuestionContainer.remove();
+        }
+    })
+
+    buttonChoice3.addEventListener("click", function() {
+        answerNumber = choices[n][2];
+        if (answers[n] == choices[c][2]) {
+            window.alert("Correct");
+            currentQuestionNumber++;
+        } else {
+            window.alert("Wrong");
+            timeLeft -=15
+            var removeQuestionContainer = document.getElementById("questionidcontainer");
+            removeQuestionContainer.remove();
+        }
+    })
+
+    buttonChoice4.addEventListener("click", function() {
+        answerNumber = choices[n][3];
+        if (answers[n] == choices[c][3]) {
+            window.alert("Correct");
+            currentQuestionNumber++;
+        } else {
+            window.alert("Wrong");
+            timeLeft -=15
+            var removeQuestionContainer = document.getElementById("questionidcontainer");
+            removeQuestionContainer.remove();
+        }
+    })
 }
+
 
