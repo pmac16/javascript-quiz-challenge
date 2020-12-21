@@ -71,26 +71,39 @@ function timerCount() {
     }
 }
 
-// //Function to display the question
-// function displayQuestion() {
+//Function to display the question
+function displayQuestion(){
 
-//     //container to hold the questions
-//     var n = currentQuestionNumber;
+    // let is firts create a container to house teh question, the answers and the submit button
+    var n = currentQuestionNumber;
 
-//     var questionContainer = document.createElement("div");
-//     questionContainer.className = "container";
-//     questionContainer.id="questionidcontainer"
+    var questionContainer = document.createElement("div");
+    questionContainer.className = "container"
+    questionContainer.id = "questionidcontainer";
 
-//     // let us create a variable with the question in formmating
-//     var questionTextString = "<h2" + questions[n] + "</h2>";
+    // let us create a variable with question and the h2 tag
+    var questionTextString = "<h2>" + questions[n] + "</h2>";
 
-//     //display the question 
-//     var questionText = document.createElement("div");
-//     questionText.className = "container";
-//     questionText.innerHTML= questionTextString;
-//     questionContainer.appendChild(questionText);
+    // now let us display the question n
+    var questionText = document.createElement("div");
+    questionText.className = "container title";
+    questionText.innerHTML = questionTextString;
+    questionContainer.appendChild(questionText);
 
-//     //display the answer choices
-//     var choiceForm = document.createElement("form");
-//     var choice1=
-// }
+    // now let us display the answer choices as individual radio buttons in a form
+
+    var choiceForm=document.createElement("form");
+    choiceForm.className = "form";
+    var choice1 =  
+    '<input type="radio" name="ans" value="1">' + choices[n][0] +
+    '<br> <input type="radio" name="ans" value="2">' + choices[n][1] + 
+   // '<br> <input type="button" id="ansBtn" onclick="buttonFunction()" value="Submit Answer"> <br>';  this goes with onclick function 
+   // and replaces the next statement
+     '<br> <input type="button" class="ansBtn" id="ansBtn" value="Submit Answer"> <br>';
+    choiceForm.innerHTML = choice1
+    questionContainer.appendChild(choiceForm);
+
+    //  now let us add the entire container to the document and display it
+    document.body.appendChild(questionContainer);
+
+}
