@@ -20,3 +20,17 @@ startButton.onclick = function() {startQuiz()};
 masterContainer.appendChild(startButton);
 
 document.body.appendChild(masterContainer);
+
+//Remove the directions and start the quiz    
+function startQuiz () {
+    var removeDirections = document.getElementById("id-container");
+    removeDirections.remove();
+
+    //Start the Timer 
+    setTimeout(timerCount, 1000);
+
+    //Display each question one at a time
+    var currentQuestionNumber= 0;
+    displayQuestion();
+
+};
