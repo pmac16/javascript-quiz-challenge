@@ -1,4 +1,4 @@
-//display start page
+//display page to submit high score 
 var masterContainer = document.createElement("div");
 masterContainer.className = "container";
 masterContainer.id = "id-container";
@@ -13,5 +13,13 @@ startButton.className = "container startButton";
 startButton.innerHTML = "Submit"
 // startButton.onclick = function() {enterScore()}; 
 masterContainer.appendChild(startButton);
+
+var playButton = document.createElement("button");
+playButton.className = "container startButton play";
+playButton.innerHTML = "Play Again"
+playButton.onclick = function () {
+    location.href = "/index.html";
+}
+masterContainer.appendChild(playButton);
 
 document.body.appendChild(masterContainer);

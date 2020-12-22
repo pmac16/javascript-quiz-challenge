@@ -1,13 +1,8 @@
 //Global variables
 var timeLeft = 75;
 var timeEl = document.getElementById('countdown');
-var currentQuestionNumber = 0; //keeps track of which question we are on
-var answerNumber = 0; //keeps track of which answer they picked
-var currentChoiceNumber = 0;
 
 var questionIndex=0
-var choiceIndex = 0
-var answerIndex = 0
 
 //Arrays for Questions, answers, and choices
 var questions = [ 
@@ -20,23 +15,24 @@ var questions = [
         question:  "The condition in an if/else statement is enclosed within ___.", 
         choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
         answer: "Parentheses",
+    },
+    {
+        question:  "Arrays in JavaScript can be used to store ___.", 
+        choices: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
+        answer: "All of the Above"
+    },
+    {
+        question:  "String values must be enclosed within ______ when being assigned to variables.", 
+        choices: ["Commas", "Curly Brackets", "Quotes", "Parantheses"],
+        answer: "Curly Brackets"
+    },
+    {
+        question:  "A very useful tool used during development and debugging for printing content to the debugger is:", 
+        choices: ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"],
+        answer: "Console Log"
     }
 ]
     
-   
-//     "Arrays in JavaScript can be used to store ___.", 
-//     "String values must be enclosed within ______ when being assigned to variables.", 
-//     "A very useful tool used during development and debugging for printing content to the debugger is:", 
-// ];
-
-// var choices = [ ,
-//     ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"]
-//     ["Commas", "Curly Brackets", "Quotes", "Parantheses"],
-//     ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"]
-
-
-// var answers = [ "Parentheses","All of the Above","Quotes","Console Log"];
-
 //display start page
 var masterContainer = document.createElement("div");
 masterContainer.className = "container";
@@ -87,30 +83,24 @@ function timerCount() {
 }
 
 //Function to display the question
-for (let i = 0; i < questions.length; i++) {
-    
-}
-
 function displayQuestion(){
-    console.log(questionIndex);
-    // let is firts create a container to house teh question, the answers and the submit button
+    
     var n = questionIndex
 
     var questionContainer = document.createElement("div");
     questionContainer.className = "container"
     questionContainer.id = "questionidcontainer";
 
-    // let us create a variable with question and the h2 tag
+    //  Question Text Variable
     var questionTextString = "<h2>" + questions[n].question + "</h2>";
 
-    // now let us display the question n
+    // Display the question
     var questionText = document.createElement("div");
     questionText.className = "container title";
     questionText.innerHTML = questionTextString;
     questionContainer.appendChild(questionText);
 
-
-    //buttons
+    //Button Choices
     var choiceContainer = document.createElement("div");
     choiceContainer.className = "container";
     questionContainer.appendChild(choiceContainer);
@@ -134,38 +124,73 @@ function displayQuestion(){
             if (event.target.dataset.choice === questions[n].answer) {
                 rightAnswer();
             }
-            
-            console.log(event.target.dataset.choice)
+            else {
+                wrongAnswer();
+            } 
         }
     }) 
-   
-  
+}
+
+function endQuiz() {
+
+
+    var masterContainer = document.createElement("div");
+    masterContainer.className = "container";
+    masterContainer.id = "id-container";
+
+    var endPage = document.createElement("div");
+    endPage.className = "container title";
+    endPage.innerHTML = "<h1>Great game!</h1>";
+    masterContainer.appendChild(endPage);
+
+    var directions = document.createElement("div");
+    directions.className = "container";
+    directions.innerHTML="<h2>Please enter your name below.</h2>";
+    masterContainer.appendChild(directions);
+    
+        //form for submitting high score
+    
+    var submitButton = document.createElement("button");
+    submitButton.className = "container startButton";
+    submitButton.innerHTML = "Submit Name"
+    // subButton.onclick = function() {startQuiz()}; should go to highscores page
+    masterContainer.appendChild(submitButton);
+    
+    document.body.appendChild(masterContainer);
 }
 
 function rightAnswer() {
     var removeQuestion = document.getElementById("questionidcontainer");
     removeQuestion.remove();
     questionIndex++;
-    if (questionIndex > questions.length -1) {
+    if (questionIndex <= questions.length -1) {
+        window.alert("Correct!");
         displayQuestion()
+    }
+    else {
+        // localStorage.setItem("mostRecentScore", timeLeft)
+        endQuiz();
     }
 }
 
-//function for wrong answer
+function wrongAnswer() {
+    var removeQuestion = document.getElementById("questionidcontainer");
+    removeQuestion.remove();
+    questionIndex++;
+    timeLeft -= 15;
+    if (questionIndex <= questions.length -1) {
+        window.alert("Wrong!");
+        displayQuestion()
+    }
+    else {
+        //  dlocalStorage.setItem("mostRecentScore", timeLeft)
+        endQuiz();
+    }
+}
+
+
+
 //end quiz function
 
 
-//     buttonChoice4.addEventListener("click", function() {
-//         answerNumber = choices[n][3];
-//         if (answers[n] == choices[c][3]) {
-//             window.alert("Correct");
-//             currentQuestionNumber++;
-//         } else {
-//             window.alert("Wrong");
-//             timeLeft -=15
-//             var removeQuestionContainer = document.getElementById("questionidcontainer");
-//             removeQuestionContainer.remove();
-//         }
-//     })
-// }
 
