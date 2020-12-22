@@ -87,3 +87,6 @@ body {
     transform: scale(1.05);
 }
 
+h3 {
+  pointer-events: none;  
+}
