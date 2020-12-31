@@ -132,8 +132,6 @@ function displayQuestion(){
 }
 
 function endQuiz() {
-
-
     var masterContainer = document.createElement("div");
     masterContainer.className = "container";
     masterContainer.id = "id-container";
@@ -142,18 +140,41 @@ function endQuiz() {
     endPage.className = "container title";
     endPage.innerHTML = "<h1>Great game!</h1>";
     masterContainer.appendChild(endPage);
-
+    
+    //display the score 
+    var displayScore= document.createElement("div");
+    document.getElementById('result');
+    displayScore.className= "container";
+    displayScore.innerHTML = "<h2> Congrats! Your final score was " + localStorage.getItem("final-score") + "!</h2>";
+    masterContainer.appendChild(displayScore);
+    
     var directions = document.createElement("div");
     directions.className = "container";
     directions.innerHTML="<h2>Please enter your name below.</h2>";
     masterContainer.appendChild(directions);
     
-        //form for submitting high score
+    //form for submitting high score
+    var nameForm = document.createElement("form");
+    nameForm.setAttribute("method", "post");
+    nameForm.className = "input";
+
+    var username= document.createElement("input");
+    username.setAttribute("type", "text");
+    username.setAttribute("name", "firstName");
+    username.setAttribute("placeholder", "First Name");
+    username.className="inputBox";
+    
+    nameForm.appendChild(userName);
+    masterContainer.appendChild(nameForm);
+    nameForm.className = "container input";
+    // nameForm.innerHTML = "";
+    masterContainer.appendChild(nameForm);
+
     
     var submitButton = document.createElement("button");
     submitButton.className = "container startButton";
     submitButton.innerHTML = "Submit Name"
-    // subButton.onclick = function() {startQuiz()}; should go to highscores page
+    submitButton.onclick= "saveHighScore(event)";
     masterContainer.appendChild(submitButton);
     
     document.body.appendChild(masterContainer);
@@ -168,7 +189,7 @@ function rightAnswer() {
         displayQuestion()
     }
     else {
-        // localStorage.setItem("mostRecentScore", timeLeft)
+        localStorage.setItem("mostRecentScore", timeLeft)
         endQuiz();
     }
 }
@@ -183,14 +204,14 @@ function wrongAnswer() {
         displayQuestion()
     }
     else {
-        //  dlocalStorage.setItem("mostRecentScore", timeLeft)
+        localStorage.setItem("mostRecentScore", timeLeft)
         endQuiz();
     }
 }
 
 
 
-//end quiz function
+
 
 
 

@@ -109,3 +109,20 @@ h3 {
 h2 {
     pointer-events: none;
 }
+
+.inputBox {
+    margin-bottom: 1rem;
+    width: 20rem;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.inputBox::placeholder {
+    color: #aaa;
+}
+
+#username {
+    margin-bottom: 3rem;
+    width: 100%;
+    outline: none;
+}

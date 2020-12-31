@@ -8,12 +8,6 @@ scoresPage.className = "container title";
 scoresPage.innerHTML="<h1>High Scores</h1>";
 masterContainer.appendChild(scoresPage);
 
-var startButton = document.createElement("button");
-startButton.className = "container startButton";
-startButton.innerHTML = "Submit"
-// startButton.onclick = function() {enterScore()}; 
-masterContainer.appendChild(startButton);
-
 var playButton = document.createElement("button");
 playButton.className = "container startButton play";
 playButton.innerHTML = "Play Again"
@@ -21,5 +15,7 @@ playButton.onclick = function () {
     location.href = "/index.html";
 }
 masterContainer.appendChild(playButton);
+
+
 
 document.body.appendChild(masterContainer);
