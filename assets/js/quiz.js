@@ -4,6 +4,10 @@ var timeEl = document.getElementById('countdown');
 
 var questionIndex=0
 
+//Array for high scores
+
+var highScores=JSON.parse(localStorage.getItem("highScores"))
+
 //Arrays for Questions, answers, and choices
 var questions = [ 
     {
@@ -16,21 +20,21 @@ var questions = [
         choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
         answer: "Parentheses",
     },
-    {
-        question:  "Arrays in JavaScript can be used to store ___.", 
-        choices: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
-        answer: "All of the Above"
-    },
-    {
-        question:  "String values must be enclosed within ______ when being assigned to variables.", 
-        choices: ["Commas", "Curly Brackets", "Quotes", "Parantheses"],
-        answer: "Curly Brackets"
-    },
-    {
-        question:  "A very useful tool used during development and debugging for printing content to the debugger is:", 
-        choices: ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"],
-        answer: "Console Log"
-    }
+    // {
+    //     question:  "Arrays in JavaScript can be used to store ___.", 
+    //     choices: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
+    //     answer: "All of the Above"
+    // },
+    // {
+    //     question:  "String values must be enclosed within ______ when being assigned to variables.", 
+    //     choices: ["Commas", "Curly Brackets", "Quotes", "Parantheses"],
+    //     answer: "Curly Brackets"
+    // },
+    // {
+    //     question:  "A very useful tool used during development and debugging for printing content to the debugger is:", 
+    //     choices: ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"],
+    //     answer: "Console Log"
+    // }
 ]
     
 //display start page
@@ -145,7 +149,7 @@ function endQuiz() {
     var displayScore= document.createElement("div");
     document.getElementById('result');
     displayScore.className= "container";
-    displayScore.innerHTML = "<h2> Congrats! Your final score was " + localStorage.getItem("final-score") + "!</h2>";
+    displayScore.innerHTML = "<h2> Congrats! Your final score was " + localStorage.getItem("mostRecentScore") + "!</h2>";
     masterContainer.appendChild(displayScore);
     
     var directions = document.createElement("div");
@@ -164,21 +168,35 @@ function endQuiz() {
     username.setAttribute("placeholder", "First Name");
     username.className="inputBox";
     
-    nameForm.appendChild(userName);
-    masterContainer.appendChild(nameForm);
-    nameForm.className = "container input";
-    // nameForm.innerHTML = "";
+    nameForm.appendChild(username);
+    
     masterContainer.appendChild(nameForm);
 
     
     var submitButton = document.createElement("button");
-    submitButton.className = "container startButton";
+    submitButton.className = "container submitButton";
     submitButton.innerHTML = "Submit Name"
     submitButton.onclick= "saveHighScore(event)";
     masterContainer.appendChild(submitButton);
     
     document.body.appendChild(masterContainer);
+
+    submitButton.addEventListener("click", function() {
+        var name= username.value
+        var nameScore = {
+            name: name,
+            score: localStorage.getItem("mostRecentScore")
+        }
+        
+        highScores.push(nameScore);
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+
+        window.location.href="../../highscores.html"
+    })
 }
+
+
+
 
 function rightAnswer() {
     var removeQuestion = document.getElementById("questionidcontainer");
