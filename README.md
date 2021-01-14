@@ -12,6 +12,8 @@ A website that allows coding boot camp students to take a timed quiz on Javascri
 https://pmac16.github.io/javascript-quiz-challenge/
 
 ![Screenshot of Deployed Site](./Screenshot.png)
+![Second Screenshot of Deployed Site](./Screenshot2.png)
+![Third Screenshot of Deployed Site](./Screenshot3.png)
 
 ## Description
 When the student clicks the start button, a timer will begin (starting with 75 seconds). The student will be presented with the first of 5 questions about Javascript. 
