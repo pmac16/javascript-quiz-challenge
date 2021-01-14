@@ -1,21 +1,22 @@
-var highScores = JSON.parse(localStorage.getItem("highScores"));
+var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+var topScores = document.querySelector("#topScores");
 
 highScores.sort(function(a,b) {
     return b.score - a.score;
 
 })
 
-console.log(highScores);
+for (let i = 0; i < 3; i++) {
+    var list = document.createElement("li");
+    list.textContent = highScores[i].name + ": " + highScores[i].score
+    topScores.appendChild(list);
+    
+}
 
 //display page to submit high score 
 var masterContainer = document.createElement("div");
 masterContainer.className = "container";
 masterContainer.id = "id-container";
-
-var scoresPage = document.createElement("div");
-scoresPage.className = "container title";
-scoresPage.innerHTML="<h1>High Scores</h1>";
-masterContainer.appendChild(scoresPage);
 
 
 var playButton = document.createElement("button");
@@ -24,8 +25,10 @@ playButton.innerHTML = "Play Again"
 playButton.onclick = function () {
     location.href = "/index.html";
 }
+
 masterContainer.appendChild(playButton);
 
 
 
 document.body.appendChild(masterContainer);
+

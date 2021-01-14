@@ -5,8 +5,8 @@ var timeEl = document.getElementById('countdown');
 var questionIndex=0
 
 //Array for high scores
+var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-var highScores=JSON.parse(localStorage.getItem("highScores"))
 
 //Arrays for Questions, answers, and choices
 var questions = [ 
@@ -20,21 +20,21 @@ var questions = [
         choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
         answer: "Parentheses",
     },
-    // {
-    //     question:  "Arrays in JavaScript can be used to store ___.", 
-    //     choices: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
-    //     answer: "All of the Above"
-    // },
-    // {
-    //     question:  "String values must be enclosed within ______ when being assigned to variables.", 
-    //     choices: ["Commas", "Curly Brackets", "Quotes", "Parantheses"],
-    //     answer: "Curly Brackets"
-    // },
-    // {
-    //     question:  "A very useful tool used during development and debugging for printing content to the debugger is:", 
-    //     choices: ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"],
-    //     answer: "Console Log"
-    // }
+    {
+        question:  "Arrays in JavaScript can be used to store ___.", 
+        choices: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
+        answer: "All of the Above"
+    },
+    {
+        question:  "String values must be enclosed within ______ when being assigned to variables.", 
+        choices: ["Commas", "Curly Brackets", "Quotes", "Parantheses"],
+        answer: "Curly Brackets"
+    },
+    {
+        question:  "A very useful tool used during development and debugging for printing content to the debugger is:", 
+        choices: ["JavaScript", "Terminal/Bash", "For Loops", "Console Log"],
+        answer: "Console Log"
+    }
 ]
     
 //display start page
@@ -186,6 +186,7 @@ function endQuiz() {
         var nameScore = {
             name: name,
             score: localStorage.getItem("mostRecentScore")
+            //store score in another variable first (like with name)
         }
         
         highScores.push(nameScore);
@@ -193,6 +194,8 @@ function endQuiz() {
 
         window.location.href="../../highscores.html"
     })
+
+    timeLeft = 0;
 }
 
 
@@ -216,7 +219,7 @@ function wrongAnswer() {
     var removeQuestion = document.getElementById("questionidcontainer");
     removeQuestion.remove();
     questionIndex++;
-    timeLeft -= 15;
+    timeLeft -= 10;
     if (questionIndex <= questions.length -1) {
         window.alert("Wrong!");
         displayQuestion()
