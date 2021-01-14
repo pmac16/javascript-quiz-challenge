@@ -186,13 +186,13 @@ function endQuiz() {
         var nameScore = {
             name: name,
             score: localStorage.getItem("mostRecentScore")
-            //store score in another variable first (like with name)
+            
         }
         
         highScores.push(nameScore);
         localStorage.setItem("highScores", JSON.stringify(highScores));
 
-        window.location.href="../../highscores.html"
+        window.location.href="highscores.html"
     })
 
     timeLeft = 0;
