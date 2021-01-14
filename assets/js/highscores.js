@@ -23,7 +23,7 @@ var playButton = document.createElement("button");
 playButton.className = "container startButton play";
 playButton.innerHTML = "Play Again"
 playButton.onclick = function () {
-    location.href = "/index.html";
+    location.href = "index.html";
 }
 
 masterContainer.appendChild(playButton);
